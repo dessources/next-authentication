@@ -237,7 +237,7 @@ export async function getPosts() {
   const data = await fetch('https://jsonplaceholder.typicode.com/posts')
   const postsAPi: Post[] = await data.json()
   const db = await lowDb()
-  const posts = externalData ? (postsAPi ?? []) : (db.data.posts ?? [])
+  const posts = externalData ? postsAPi ?? [] : db.data.posts ?? []
   // experimental_taintObjectReference(
   //   'Do not pass the entire user object to the client. ' +
   //     'Instead, pick off the specific properties you need for this use case.',
